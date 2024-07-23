@@ -28,11 +28,24 @@ This repository contains the Spring Boot application for managing CI/CD jobs.
 
 ## Endpoints
 
-- `GET /jobs`: Retrieve all jobs.
-- `POST /jobs`: Create a new job.
-- `GET /jobs/{id}`: Retrieve a job by ID.
-- `PUT /jobs/{id}`: Update a job.
-- `DELETE /jobs/{id}`: Delete a job.
-- `GET /jobs/status/{status}`: Retrieve jobs by status.
-- `GET /jobs/jobType/{jobType}`: Retrieve jobs by job type.
-- `GET /jobs/date-range?startDate={startDate}&endDate={endDate}`: Retrieve jobs by date range.
+| Method | Endpoint                                         | Description                           |
+|--------|--------------------------------------------------|---------------------------------------|
+| GET    | /jobs                                            | Retrieve all jobs                     |
+| POST   | /jobs                                            | Create a new job                      |
+| GET    | /jobs/{id}                                       | Retrieve a job by ID                  |
+| PUT    | /jobs/{id}                                       | Update a job                          |
+| DELETE | /jobs/{id}                                       | Delete a job                          |
+| GET    | /jobs/status/{status}                            | Retrieve jobs by status               |
+| GET    | /jobs/jobType/{jobType}                          | Retrieve jobs by job type             |
+| GET    | /jobs/date-range?startDate={startDate}&endDate={endDate} | Retrieve jobs by date range          |
+
+## API Status Codes
+
+| Status Code | Description                                                    |
+|-------------|----------------------------------------------------------------|
+| 200 OK      | The request has succeeded                                      |
+| 201 Created | The request has succeeded and a new resource has been created as a result |
+| 204 No Content | The request has succeeded, but there is no content to send for this request |
+| 400 Bad Request | The server could not understand the request due to invalid syntax |
+| 404 Not Found | The server can not find the requested resource               |
+| 500 Internal Server Error | The server has encountered a situation it doesn't know how to handle |
