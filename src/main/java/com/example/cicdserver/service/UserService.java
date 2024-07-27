@@ -1,30 +1,27 @@
 package com.example.cicdserver.service;
 
-import com.example.cicdserver.entity.AppUser;
-import com.example.cicdserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.example.cicdserver.entity.AppUser;
+import com.example.cicdserver.repository.UserRepository;
 
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    public void createUser(String username, String rawPassword) {
-        AppUser user = new AppUser();
-        user.setUsername(username);
-        user.setPassword(passwordEncoder.encode(rawPassword));
-        userRepository.save(user);
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public void updateUserPassword(Long userId, String newRawPassword) {
-        AppUser user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        user.setPassword(passwordEncoder.encode(newRawPassword));
-        userRepository.save(user);
+    public AppUser createUser(String username, String password) {
+        AppUser user = new AppUser();
+        user.setUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
+        return userRepository.save(user);
     }
 }

@@ -1,10 +1,7 @@
 package com.example.cicdserver.repository;
 
-import com.example.cicdserver.entity.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
+import com.example.cicdserver.entity.AppUser;
 
 public interface UserRepository extends JpaRepository<AppUser, Long> {
-    Optional<AppUser> findByUsername(String username);
 }
