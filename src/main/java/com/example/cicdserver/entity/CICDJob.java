@@ -1,17 +1,14 @@
 package com.example.cicdserver.entity;
 
-import lombok.Data;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "cicd_jobs")
-@Data
 public class CICDJob {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,16 +18,52 @@ public class CICDJob {
     private LocalDateTime updatedAt;
     private String jobType;
 
-    public CICDJob() {
-        // Default constructor required by JPA
+    // Getters and Setters
+    public Long getId() {
+        return id;
     }
 
-    public CICDJob(Long id, String jobName, String status, LocalDateTime createdAt, LocalDateTime updatedAt, String jobType) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getJobName() {
+        return jobName;
+    }
+
+    public void setJobName(String jobName) {
         this.jobName = jobName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String jobType) {
         this.jobType = jobType;
     }
 }
