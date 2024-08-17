@@ -51,4 +51,5 @@ public class CICDJobService {
     public List<CICDJob> getJobsByDateRange(LocalDateTime startDate, LocalDateTime endDate) {
         return cicdJobRepository.findByCreatedAtBetween(startDate, endDate);
     }
+
 }

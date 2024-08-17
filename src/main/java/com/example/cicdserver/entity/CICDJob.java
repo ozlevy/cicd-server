@@ -9,6 +9,16 @@ import java.time.LocalDateTime;
 @Entity
 public class CICDJob {
 
+    public CICDJob() {}
+
+    public CICDJob(String jobName, String status, String jobType, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.jobName = jobName;
+        this.status = status;
+        this.jobType = jobType;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -11,4 +11,5 @@ public interface CICDJobRepository extends JpaRepository<CICDJob, Long> {
     List<CICDJob> findByStatus(String status);
     List<CICDJob> findByJobType(String jobType);
     List<CICDJob> findByCreatedAtBetween(LocalDateTime startDate, LocalDateTime endDate);
+    List<CICDJob> findByUpdatedAtBetween(LocalDateTime startDate, LocalDateTime endDate);
 }
